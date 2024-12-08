@@ -1,0 +1,148 @@
+git --version
+
+#To get the number of users who are using
+git config --global user.name
+git config --global user.email
+git config --list
+
+#To get help
+git help <verb>
+eg git help config
+
+#To let git know the files to ignore, enter it in .gitignore file by creating it.
+
+#Existing project that we want to start tracking in git
+>Got to directory where you want to track
+git status
+
+#Add files to staging area
+git add .
+
+#remove files from staging
+git reset
+
+#to commit the changes
+git commit -m "Message to send when committing."
+
+#To get log
+git log
+
+############################################ COMPANY USAGE SCENARIO ######################################
+#Cloning the remote repository
+git clone <url> <location_to_clone>
+git clone <url> .
+
+#viewing information about remote repo
+git remote -v
+
+#lists all the branches in the repositories including present in the url
+git branch -a
+
+#To check the changes
+git diff
+
+#Add to stage
+git add .
+
+#Commit
+git commit -m "Message"
+
+#When you are ready with changes and ready to be pushed. you need to pull and push to repo
+git pull origin master
+git push origin master
+
+############################################ COMMON SCENARIO ######################################
+
+#You should not push your changes to the master branch directly.
+#YOu should create your own branch first
+git branch <branch_name>
+
+#To shift to that branch
+git checkout <branch_name>
+
+#To create and shift on new branch
+git checkout -b <branch_name>
+
+#To check the changes
+git diff
+
+#Add to stage
+git add .
+
+#Commit to the newly created branch which does not affect the master or other branches
+git commit -m "Message"
+
+#push to remote repo
+git push -u origin <branch_name>
+
+#To see all the branches
+gir branch -a
+
+#To merge with the master branch. the below command will switch to master branch
+git checkout master
+
+#Pull from master
+git pull origin master
+
+#To check which branches have been merged with the master
+git branch --merged
+
+#to merge in the master
+git merge <branch_name>
+
+#Push the changes
+git push origin master
+
+#delete the created branch locally
+git branch -d <branch_name>
+
+#delete the created branch locally
+git push origin --delete <branch_name>
+
+
+
+
+===========================================================================================================================================
+
+#After making the changes to the file, say we dont want any changes
+git checkout <file_name.py>
+
+#If you have messed up with the commit message and to correct the message
+git commit --amend -m "New and correct Message"
+
+#If we left the file to be commited from the staging area
+git commit --amend
+
+git log
+
+git log --stat
+
+#If by accident you are making changes to the wrong branch. Now if we want to move this commit to feature branch and move master branch back
+git log --> get the hash
+git checkout <branch_name>
+git cherry-pick <hash>
+
+
+#To delete from master
+git checkout master
+git log -->get the hash
+
+#There are few types of reset, soft reset will keep the files in the staging area
+git reset --soft <hash>
+git log
+git status --> we will have some files in the staging area
+
+#reset will not keep the files in the staging area but will keep it in working area i.e before staging.
+got reset <hash>
+
+#This will comletely clean the modifications that you have done.
+git reset --hard
+
+# clears the untracked files and directories
+git clean -df
+
+#If say you still need the changes after hard reset,
+git reflog
+
+#To compare 2 commits
+git diff <hash1> <hash2>
